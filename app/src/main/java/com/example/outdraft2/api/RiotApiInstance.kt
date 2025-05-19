@@ -3,12 +3,11 @@ package com.example.outdraft2.api
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-object RetrofitInstance {
-    private const val BASE_URL = "https://europe.api.riotgames.com/"
+object RiotApiInstance {
 
     val api: RiotApi by lazy {
         Retrofit.Builder()
-            .baseUrl(BASE_URL)
+            .baseUrl("https://placeholder.com/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(RiotApi::class.java)

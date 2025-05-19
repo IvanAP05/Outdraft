@@ -21,3 +21,8 @@ data class RiotAccount(
     val gameName: String,
     val tagLine: String
 )
+
+data class AccountInfo(
+    val profileIconId: Int,
+    val summonerLevel: Int
+)

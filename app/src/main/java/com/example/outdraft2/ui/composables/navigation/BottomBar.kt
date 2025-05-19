@@ -1,5 +1,6 @@
 package com.example.outdraft2.ui.composables.navigation
 
+import android.app.Activity
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -60,9 +61,9 @@ fun BottomApp(navController: NavHostController) {
 }
 
 @Composable
-fun AppNavigation(navController: NavHostController) {
+fun AppNavigation(navController: NavHostController, activity: Activity) {
     NavHost(navController = navController, startDestination = "counter") {
-        composable("search") { SearchPlayerPage() }
+        composable("search") { SearchPlayerPage(activity) }
         composable("counter") { CounterPage() }
         composable("build") { BuildPage() }
     }
