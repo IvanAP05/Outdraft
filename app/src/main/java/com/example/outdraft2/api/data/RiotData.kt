@@ -1,21 +1,5 @@
 package com.example.outdraft2.api.data
 
-data class MatchResponse(
-    val info: Info
-)
-
-data class Info(
-    val participants: List<Participant>
-)
-
-data class Participant(
-    val puuid: String,
-    val kills: Int,
-    val deaths: Int,
-    val assists: Int,
-    val riotIdGameName: String
-)
-
 data class RiotAccount(
     val puuid: String,
     val gameName: String,
@@ -24,5 +8,27 @@ data class RiotAccount(
 
 data class AccountInfo(
     val profileIconId: Int,
-    val summonerLevel: Int
+    val summonerLevel: Int,
+    val topChampionId: Int
+)
+data class ChampionMastery(
+    val championId: Int,
+    val championLevel: Int,
+    val championPoints: Int,
+)
+
+data class ChampionDataResponse(
+    val data: Map<String, ChampionData>
+)
+
+data class ChampionData(
+    val id: String,
+    val skins: List<Skin>
+)
+
+data class Skin(
+    val id: String,
+    val num: Int,
+    val name: String,
+    val chromas: Boolean
 )

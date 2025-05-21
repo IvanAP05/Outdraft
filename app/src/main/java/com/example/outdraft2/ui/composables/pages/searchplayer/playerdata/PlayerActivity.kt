@@ -43,6 +43,7 @@ class PlayerActivity : ComponentActivity() {
         val summonerLevel = intent.getIntExtra("summonerLevel", 0)
         val summonerName = intent.getStringExtra("summonerName") ?: "Invocador"
         val tagLine = intent.getStringExtra("tagLine") ?: "0000"
+        val skinName = intent.getStringExtra("skinName") ?: "0000"
 
         enableEdgeToEdge()
         setContent {
@@ -51,7 +52,7 @@ class PlayerActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize()
                 ) { innerPadding ->
                     Box(modifier = Modifier.padding(innerPadding)) {
-                        PlayerScreen(profileIconId, summonerLevel, summonerName, tagLine)
+                        PlayerScreen(profileIconId, summonerLevel, summonerName, tagLine, skinName)
                     }
                 }
             }
@@ -71,7 +72,6 @@ class PlayerActivity : ComponentActivity() {
                 .fillMaxWidth()
                 .height(200.dp)
         ) {
-            // Fondo
             AsyncImage(
                 model = imageUrl,
                 contentDescription = "TopBar Background",
@@ -79,7 +79,6 @@ class PlayerActivity : ComponentActivity() {
                 modifier = Modifier.fillMaxSize()
             )
 
-            // Gradiente
             Box(
                 modifier = Modifier
                     .fillMaxSize()
@@ -92,7 +91,6 @@ class PlayerActivity : ComponentActivity() {
                     )
             )
 
-            // Flecha volver
             Icon(
                 imageVector = Icons.AutoMirrored.TwoTone.ArrowBack,
                 contentDescription = "Volver",
@@ -104,7 +102,6 @@ class PlayerActivity : ComponentActivity() {
                     }
             )
 
-            // Contenido inferior
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -141,12 +138,12 @@ class PlayerActivity : ComponentActivity() {
 
 
     @Composable
-    fun PlayerScreen(profileIconId: Int, summonerLevel: Int, summonerName: String, tagLine: String) {
+    fun PlayerScreen(profileIconId: Int, summonerLevel: Int, summonerName: String, tagLine: String, skinName: String) {
         val profileIconUrl = "https://ddragon.leagueoflegends.com/cdn/15.10.1/img/profileicon/$profileIconId.png"
 
         Box(modifier = Modifier.fillMaxSize()) {
             TopBar(
-                imageUrl = "https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Ezreal_9.jpg",
+                imageUrl = "https://ddragon.leagueoflegends.com/cdn/img/champion/splash/$skinName.jpg",
                 profileIconUrl = profileIconUrl,
                 summonerLevel = summonerLevel,
                 summonerName = summonerName,
@@ -156,12 +153,14 @@ class PlayerActivity : ComponentActivity() {
     }
 
     companion object {
-        fun start(activity: Activity, profileIconId: Int, summonerLevel: Int, summonerName: String, tagLine: String) {
+        fun start(activity: Activity, profileIconId: Int, summonerLevel: Int, summonerName: String, tagLine: String, skinName: String) {
             val intent = Intent(activity, PlayerActivity::class.java).apply {
                 putExtra("profileIconId", profileIconId)
                 putExtra("summonerLevel", summonerLevel)
                 putExtra("summonerName", summonerName)
                 putExtra("tagLine", tagLine)
+                putExtra("skinName", skinName)
+
             }
             activity.startActivity(intent)
         }

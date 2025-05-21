@@ -62,9 +62,8 @@ fun SearchPlayerPage(activity: Activity) {
                     val gameName = parts[0]
                     val tagLine = parts[1]
 
-                    // Llamar al viewModel para cargar los datos
-                    viewModel.getProfileIconAndLevel(gameName, tagLine) { iconId, level, gameNameOf, tagLineOf->
-                        PlayerActivity.start(activity, iconId, level, gameNameOf, tagLineOf)
+                    viewModel.getProfileIconAndLevel(activity, gameName, tagLine) { iconId, level, gameNameOf, tagLineOf, skinName->
+                        PlayerActivity.start(activity, iconId, level, gameNameOf, tagLineOf, skinName)
                     }
                 }
             }
