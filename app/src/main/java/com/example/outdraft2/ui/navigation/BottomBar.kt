@@ -1,4 +1,4 @@
-package com.example.outdraft2.ui.composables.navigation
+package com.example.outdraft2.ui.navigation
 
 import android.app.Activity
 import androidx.compose.foundation.Image
@@ -17,9 +17,9 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.example.outdraft2.R
-import com.example.outdraft2.ui.composables.pages.builds.BuildPage
-import com.example.outdraft2.ui.composables.pages.counter.CounterPage
-import com.example.outdraft2.ui.composables.pages.searchplayer.SearchPlayerPage
+import com.example.outdraft2.ui.pages.builds.BuildPage
+import com.example.outdraft2.ui.pages.counter.CounterPage
+import com.example.outdraft2.ui.pages.searchplayer.SearchPlayerPage
 
 
 @Composable
@@ -62,7 +62,7 @@ fun BottomApp(navController: NavHostController) {
 
 @Composable
 fun AppNavigation(navController: NavHostController, activity: Activity) {
-    NavHost(navController = navController, startDestination = "counter") {
+    NavHost(navController = navController, startDestination = "search") {
         composable("search") { SearchPlayerPage(activity) }
         composable("counter") { CounterPage() }
         composable("build") { BuildPage() }

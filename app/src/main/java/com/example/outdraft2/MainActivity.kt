@@ -15,13 +15,14 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.navigation.compose.rememberNavController
-import com.example.outdraft2.ui.composables.navigation.AppNavigation
-import com.example.outdraft2.ui.composables.navigation.BottomApp
+import com.example.outdraft2.ui.navigation.AppNavigation
+import com.example.outdraft2.ui.navigation.BottomApp
 import com.example.outdraft2.ui.theme.Outdraft2Theme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         enableEdgeToEdge()
         setContent {
             Outdraft2Theme {

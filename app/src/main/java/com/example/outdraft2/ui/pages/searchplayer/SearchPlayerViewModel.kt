@@ -1,4 +1,4 @@
-package com.example.outdraft2.ui.composables.pages.searchplayer
+package com.example.outdraft2.ui.pages.searchplayer
 
 import android.content.Context
 import android.util.Log
@@ -6,12 +6,18 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.outdraft2.api.RiotApiInstance
+import com.example.outdraft2.api.data.PlayerState
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import org.json.JSONObject
 
 class SearchPlayerViewModel : ViewModel() {
     val kda = mutableStateOf("¡Busca el invocador que quieras!")
-    val isLoading = mutableStateOf(false)
+    private var _mutableState = MutableStateFlow(PlayerState())
+
+    val state: StateFlow<PlayerState> = _mutableState
 
     fun getProfileIconAndLevel(
         context: Context,
@@ -20,8 +26,9 @@ class SearchPlayerViewModel : ViewModel() {
         onResult: (Int, Int, String, String, String) -> Unit
     ) {
         viewModelScope.launch {
-            isLoading.value = true
-
+            _mutableState.update {
+                it.copy(isLoading = true)
+            }
             try {
                 val apiKey = "RGAPI-b2883465-e745-4c1e-a30c-a15de3a49c76"
                 val account = RiotApiInstance.apiRiot.getAccountByRiotId(gameName, tagLine, apiKey)
@@ -52,8 +59,11 @@ class SearchPlayerViewModel : ViewModel() {
                 }
             } catch (e: Exception) {
                 Log.e("SearchPlayerVM", "Error al obtener datos del invocador", e)
-            } finally {
-                isLoading.value = false
+            }
+            finally {
+                _mutableState.update {
+                    it.copy(isLoading = false)
+                }
             }
         }
     }

@@ -24,7 +24,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.composables.pages.searchplayer.playerdata.PlayerActivity"/>
+        <activity android:name=".ui.pages.searchplayer.playerdata.PlayerActivity"/>
     </application>
 
 </manifest>
