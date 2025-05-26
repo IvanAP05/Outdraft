@@ -14,7 +14,6 @@ data class SummonerInfo(
 data class Champion(
     val id: String,
     val name: String,
-    val title: String,
     val tags: List<String>
 ) {
     val imageUrl: String
@@ -77,7 +76,6 @@ data class MatchParticipant(
     val neutralMinionsKilled: Int = 0,
     val goldEarned: Int = 0,
     val totalDamageDealtToChampions: Int = 0,
-    val visionScore: Int = 0,
     val teamId: Int = 100,
     val item0: Int = 0,
     val item1: Int = 0,
