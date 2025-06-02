@@ -19,6 +19,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Outdraft2"
+rootProject.name = "Outdraft"
 include(":app")
  

@@ -5,11 +5,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.outdraft2"
+    namespace = "com.example.outdraft"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.example.outdraft2"
+        applicationId = "com.example.outdraft"
         minSdk = 24
         targetSdk = 35
         versionCode = 1
@@ -48,7 +48,6 @@ dependencies {
     implementation (libs.androidx.lifecycle.runtime.ktx.v261)
     implementation (libs.androidx.lifecycle.viewmodel.compose)
     implementation(libs.coil.compose)
-
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
