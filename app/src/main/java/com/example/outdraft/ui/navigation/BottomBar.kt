@@ -74,22 +74,6 @@ fun BottomApp(pagerState: PagerState) {
 }
 
 @Composable
-fun AppNavigation(activity: Activity) {
-    val pagerState = rememberPagerState(initialPage = 1, pageCount = { 3 })
-
-    HorizontalPager(
-        state = pagerState,
-        modifier = Modifier.fillMaxWidth()
-    ) { page ->
-        when (page) {
-            0 -> CounterPage()
-            1 -> SearchPlayerPage(activity)
-            2 -> BuildPage(activity)
-        }
-    }
-}
-
-@Composable
 fun AppWithBottomNavigation(activity: Activity) {
     val pagerState = rememberPagerState(initialPage = 1, pageCount = { 3 })
 

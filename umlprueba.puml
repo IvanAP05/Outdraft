@@ -1,0 +1,167 @@
+@startuml
+class com.example.outdraft.domain.MainRepository {
++ Set<String> getFavoriteChampions(Context)
++ Set<String> addFavoriteChampion(Context,String)
++ Set<String> removeFavoriteChampion(Context,String)
+}
+
+class com.example.outdraft.ui.pages.searchplayer.playerdata.PlayerViewModelFactory {
+}
+interface com.example.outdraft.api.ApiDataDragon {
++ void getChampionData(void)
+}
+
+interface com.example.outdraft.api.ApiRIOT {
++ void getAccountByRiotId(void)
++ void getAccountInfoByPUUID(void)
++ void getTopChampByPUUID(void)
++ void getMatchesListByPUUID(void)
++ void getMatchInfoById(void)
++ void getRankByPUUID(void)
+}
+
+class com.example.outdraft.ui.theme.BuildColors {
++  DarkBlue
++  MediumBlue
++  LightBlue
++  AccentCyan
++  AccentBlue
++  DarkGray
++  LightGray
++  White
++  CardBackground
++  FilterBackground
++  WinRateGradient
+}
+
+class com.example.outdraft.ui.pages.searchplayer.playerdata.PlayerActivity$Companion {
++ void start(Activity,Int,Int,String,String,String)
+}
+
+class com.example.outdraft.ui.pages.searchplayer.playerdata.PlayerActivity {
++ void onCreate(Bundle?)
+}
+
+interface com.example.outdraft.api.SupabaseApiService {
++ void getAllMatchupsForChampion(void)
+}
+
+class com.example.outdraft.MainActivity {
++ void onCreate(Bundle?)
+}
+
+class com.example.outdraft.ui.pages.searchplayer.playerdata.PlayerViewModel {
+}
+class com.example.outdraft.ui.pages.searchplayer.SearchPlayerViewModel {
++  kda
+-  _mutableState
++ StateFlow<PlayerState> state
++ void getProfileIconAndLevel(void,Context,void,String,void,String,void,(Int, Int, String, String, String) -> Unit)
++ void null()
+- String getRandomSkinFromChampion(String)
+}
+
+
+class com.example.outdraft.ui.pages.counter.counterdata.CounterActivity$Companion {
++  EXTRA_CHAMPION_ID
++  EXTRA_CHAMPION_NAME
++  EXTRA_CHAMPION_KEY
+}
+
+class com.example.outdraft.ui.pages.counter.counterdata.CounterActivity {
+- CounterViewModel viewModel
++ void onCreate(Bundle?)
+}
+
+
+class com.example.outdraft.data.LocalDataSource {
++ Set<String> getFavoriteChampions(Context)
++ void saveFavoriteChampions(Context,Set<String>)
+}
+
+class com.example.outdraft.api.RiotApiInstance {
++ ApiRIOT apiRiot
++ ApiDataDragon apiDD
+}
+
+class com.example.outdraft.ui.pages.builds.Build {
+}
+class com.example.outdraft.ui.pages.builds.BuildWithItems {
+}
+enum com.example.outdraft.ui.pages.builds.ItemType {
+}
+class com.example.outdraft.ui.pages.builds.null {
+}
+class com.example.outdraft.ui.pages.counter.counterdata.CounterViewModel$null {
+}
+class com.example.outdraft.ui.pages.counter.counterdata.CounterViewModel {
+-  _uiState
++ StateFlow<CounterUiState> uiState
+-  supabaseUrl
+-  supabaseKey
+-  supabaseApi
+-  availableRanks
+-  availablePositions
++ void updateSelectedRank(String)
++ void updateSelectedPosition(String)
++ void updateSearchQuery(String)
++ void loadWinRatiosForChampion(String)
+- List<WinRatio> loadAllWinRatiosFromSupabase(String)
+- String handleSupabaseError(Exception)
+}
+
+
+class com.example.outdraft.api.data.RiotAccount {
+}
+class com.example.outdraft.api.data.SummonerInfo {
+}
+class com.example.outdraft.api.data.Champion {
+}
+class com.example.outdraft.api.data.ChampionMastery {
+}
+class com.example.outdraft.api.data.ChampionDataResponse {
+}
+class com.example.outdraft.api.data.ChampionData {
+}
+class com.example.outdraft.api.data.Skin {
+}
+class com.example.outdraft.api.data.PlayerRank {
+}
+class com.example.outdraft.api.data.MatchParticipant {
+}
+class com.example.outdraft.api.data.MatchTeam {
+}
+class com.example.outdraft.api.data.ChampionBan {
+}
+class com.example.outdraft.api.data.MatchSummary {
+}
+class com.example.outdraft.api.data.MatchDetail {
+}
+class com.example.outdraft.api.data.MatchResponse {
+}
+class com.example.outdraft.api.data.MatchMetadata {
+}
+class com.example.outdraft.api.data.MatchInfo {
+}
+class com.example.outdraft.api.data.PlayerState {
+}
+class com.example.outdraft.api.data.Item {
+}
+class com.example.outdraft.api.data.MatchupResponse {
+}
+class com.example.outdraft.api.data.WinRatio {
+}
+class com.example.outdraft.api.data.CounterUiState {
+}
+
+
+com.example.outdraft.ui.pages.searchplayer.playerdata.PlayerActivity +.. com.example.outdraft.ui.pages.searchplayer.playerdata.PlayerActivity$Companion
+androidx.activity.ComponentActivity <|-- com.example.outdraft.ui.pages.searchplayer.playerdata.PlayerActivity
+androidx.activity.ComponentActivity <|-- com.example.outdraft.MainActivity
+androidx.lifecycle.ViewModel <|-- com.example.outdraft.ui.pages.searchplayer.SearchPlayerViewModel
+com.example.outdraft.ui.pages.counter.counterdata.CounterActivity +.. com.example.outdraft.ui.pages.counter.counterdata.CounterActivity$Companion
+androidx.activity.ComponentActivity <|-- com.example.outdraft.ui.pages.counter.counterdata.CounterActivity
+com.example.outdraft.ui.pages.builds.TypeToken <|-- com.example.outdraft.ui.pages.builds.null
+com.example.outdraft.ui.pages.counter.counterdata.CounterViewModel +.. com.example.outdraft.ui.pages.counter.counterdata.CounterViewModel$null
+androidx.lifecycle.ViewModel <|-- com.example.outdraft.ui.pages.counter.counterdata.CounterViewModel
+@enduml
