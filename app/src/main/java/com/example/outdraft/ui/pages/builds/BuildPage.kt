@@ -606,16 +606,16 @@ private fun ItemSlot(
                     model = item.imageUrl,
                     contentDescription = item.name,
                     modifier = Modifier
-                        .fillMaxSize()
-                        .clip(RoundedCornerShape(8.dp)),
+                        .size(50.dp) // Cambiado de fillMaxSize() a tamaño fijo más pequeño
+                        .clip(RoundedCornerShape(6.dp)), // Radio ligeramente menor
                     contentScale = ContentScale.Crop
                 )
 
                 Box(
                     modifier = Modifier
                         .align(Alignment.TopEnd)
-                        .padding(4.dp)
-                        .size(20.dp)
+                        .padding(2.dp) // Reducido de 4.dp a 2.dp
+                        .size(18.dp) // Reducido de 20.dp a 18.dp
                         .background(
                             Color.Red.copy(alpha = 0.9f),
                             CircleShape
@@ -627,7 +627,7 @@ private fun ItemSlot(
                         Icons.Default.Close,
                         contentDescription = "Remover ítem",
                         tint = Color.White,
-                        modifier = Modifier.size(14.dp)
+                        modifier = Modifier.size(12.dp) // Reducido de 14.dp a 12.dp
                     )
                 }
             }
